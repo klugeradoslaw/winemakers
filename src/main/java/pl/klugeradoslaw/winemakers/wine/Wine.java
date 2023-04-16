@@ -3,6 +3,7 @@ package pl.klugeradoslaw.winemakers.wine;
 import jakarta.persistence.*;
 import pl.klugeradoslaw.winemakers.step.Step;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +22,6 @@ public class Wine {
     private WineStatus status;
     @OneToMany
     @JoinColumn(name = "wine_id")
-    private List<Step> steps;
+    private List<Step> steps = new ArrayList<>();
 
 }
