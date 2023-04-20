@@ -20,7 +20,6 @@ private final WineCalcService wineCalcService;
         return "calc";
     }
 
-
     @PostMapping
     String calculateAmountOfSugar(@ModelAttribute("wineCalculator") WineCalculator wineCalculator, Model model) {
         model.addAttribute("alcoholPercentage", wineCalculator.getAlcoholPercentage());

@@ -1,8 +1,6 @@
 package pl.klugeradoslaw.winemakers.calculator;
 
-import jakarta.persistence.Entity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
 
 @Component
 public class WineCalculator {

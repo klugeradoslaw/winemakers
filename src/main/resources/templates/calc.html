@@ -40,15 +40,15 @@
 <h1>Oblicz ilość potrzebnego cukru!</h1>
 
 <form method="post" th:action="@{/calc}" th:object="${wineCalculator}">
-  <label>
+  <label th:for="alcoholPercentage">
     Oczekiwany % alkoholu
   </label>
-    <input th:field="*{alcoholPercentage}" placeholder="12.00">
+    <input type="number" th:field="*{alcoholPercentage}" min="0" placeholder="12.00">
   <br>
-  <label>
+  <label th:for="amountOfWineInCarboy">
     Ilość wina w balonie
   </label>
-    <input th:field="*{amountOfWineInCarboy}" placeholder="25.00">
+    <input type="number" th:field="*{amountOfWineInCarboy}" min="0" placeholder="25.00">
   <br>
   <button type="submit">Oblicz</button>
 </form>
