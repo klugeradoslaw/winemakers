@@ -37,12 +37,30 @@
     </div>
   </div>
 </nav>
+<h1>Oblicz ilość potrzebnego cukru!</h1>
 
-<div class="home-jumbo">
-  <div class="container-fluid py-5 text-white text-center">
-    <h1 class="display-5 fw-bold"></h1>
-    <br><br><br><br><br>
-    <p class="fs-4">to simplify your home winery.</p>
-  </div>
+<form method="post" th:action="@{/calc}" th:object="${wineCalculator}">
+  <label>
+    Oczekiwany % alkoholu
+  </label>
+    <input th:field="*{alcoholPercentage}" placeholder="12.00">
+  <br>
+  <label>
+    Ilość wina w balonie
+  </label>
+    <input th:field="*{amountOfWineInCarboy}" placeholder="25.00">
+  <br>
+  <button type="submit">Oblicz</button>
+</form>
+
+<section th:if="*{amountOfSugar != null}">
+
+  <h3 th:text="'W celu otrzymania ' + *{alcoholPercentage} + '% alkoholu w ' + *{amountOfWineInCarboy} + ' litrach wina, należy dodać ' + *{amountOfSugar} + ' kg cukru.'"></h3>
+
+
+</section>
+
+
+
 </body>
 </html>
