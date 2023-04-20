@@ -35,4 +35,3 @@ public class WineCalculator {
         this.amountOfWineInCarboy = amountOfWineInCarboy;
     }
 }
-

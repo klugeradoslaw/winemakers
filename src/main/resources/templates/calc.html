@@ -52,14 +52,15 @@
   <br>
   <button type="submit">Oblicz</button>
 </form>
+<br>
+<div th:if="*{amountOfSugar != null}" class="alert alert-success" role="alert">
+  <span th:text="'W celu otrzymania ' + *{alcoholPercentage} + '% alkoholu w ' + *{amountOfWineInCarboy} + ' litrach wina, należy dodać ' + *{amountOfSugar} + ' kg cukru.'"></span>
+</div>
 
-<section th:if="*{amountOfSugar != null}">
 
-  <h3 th:text="'W celu otrzymania ' + *{alcoholPercentage} + '% alkoholu w ' + *{amountOfWineInCarboy} + ' litrach wina, należy dodać ' + *{amountOfSugar} + ' kg cukru.'"></h3>
-
-
-</section>
-
+<div th:if="${error}" class="alert alert-danger" role="alert">
+  <span th:text="${error}"></span>
+</div>
 
 
 </body>
