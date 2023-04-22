@@ -1,3 +1,16 @@
-.home-jumbo {
-    background: url('../img/wm-logo.png') center;
+.jumbotron {
+    background-image: url("../img/jumbotron.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 1.5rem;
+    text-align: center;
+}
+.jumbotron-header {
+    font-size: 4rem;
+    margin: 1rem 0;
+    color: white;
+}
+.jumbotron-description {
+    font-size: 1.2rem;
+    color: white;
 }

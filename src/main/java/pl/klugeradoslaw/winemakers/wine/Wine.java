@@ -3,6 +3,7 @@ package pl.klugeradoslaw.winemakers.wine;
 import jakarta.persistence.*;
 import pl.klugeradoslaw.winemakers.step.Step;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,8 +15,8 @@ public class Wine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    //data????
-    private Date dateOfStart;
+    // yyyy-MM-dd
+    private LocalDate dateOfStart;
     private String shortDescription;
     private String longDescription;
     @Enumerated(EnumType.STRING)
