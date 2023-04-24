@@ -1,16 +1,16 @@
 .jumbotron {
-    background-image: url("../img/jumbotron.png");
+    background-image: url("../img/grapes-jumbotron-crop.jpeg");
     background-position: center;
     background-repeat: no-repeat;
-    padding: 1.5rem;
+    padding: 2rem;
     text-align: center;
 }
 .jumbotron-header {
-    font-size: 4rem;
+    font-size: 4.5rem;
     margin: 1rem 0;
     color: white;
 }
 .jumbotron-description {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: white;
 }
