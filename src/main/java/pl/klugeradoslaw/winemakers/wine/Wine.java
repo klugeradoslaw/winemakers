@@ -21,8 +21,8 @@ public class Wine {
     private String longDescription;
     @Enumerated(EnumType.STRING)
     private WineStatus status;
- //   @OneToMany
- //   @JoinColumn(name = "wine_id")
- //   private List<Step> steps = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "wine_id")
+    private List<Step> steps = new ArrayList<>();
 
 }
