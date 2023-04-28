@@ -5,6 +5,35 @@
       layout:decorate="~{layout}">
 
 <main layout:fragment="content">
+    <div class="container">
+        <div class="row mb-2 py-3">
+            <ul>
+                <li >
+                    <div class="card m-2">
+                        <div class="row g-0">
+                            <div class="col-md-2">
+                                <img src="/img/place-holder.jpg" class="img-fluid rounded-start card-img" />
+                            </div>
+                            <div class="col-md-10">
+                                <div class="card-body">
+                                    <h3 class="card-title">
+                                        <a href="#" th:href="@{|/wine/${wine.id}|}" th:text="${wine.name}">Name of wine</a>
+                                    </h3>
+                                    <p class="card-text">
+                                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                    </p>
+                                    <a href="#" class="stretched-link">Continue reading</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
     tu będzie lista winek
 </main>
 

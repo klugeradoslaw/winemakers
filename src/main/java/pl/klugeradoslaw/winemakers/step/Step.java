@@ -17,11 +17,7 @@ public class Step {
     private LocalDate dateOfStep;
     private String description;
 
-
-
     public Step() {
     }
-
-
 
 }
