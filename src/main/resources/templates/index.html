@@ -6,9 +6,9 @@
 
 <main layout:fragment="content">
     <div class="container">
-        <div class="row mb-2 py-3">
+        <div class="row mb-2 py-2">
             <ul>
-                <li >
+                <li th th:each="wine:${wines}">
                     <div class="card m-2">
                         <div class="row g-0">
                             <div class="col-md-2">
@@ -19,13 +19,11 @@
                                     <h3 class="card-title">
                                         <a href="#" th:href="@{|/wine/${wine.id}|}" th:text="${wine.name}">Name of wine</a>
                                     </h3>
+                                    <p class="card-text" th:text="${wine.shortDescription}">Krotki opis wina.</p>
                                     <p class="card-text">
-                                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                                        <small class="text-muted" th:text="'Utworzono ' + ${wine.dateOfStart}">Utworzono...</small>
                                     </p>
-                                    <p class="card-text">
-                                        <small class="text-muted">Last updated 3 mins ago</small>
-                                    </p>
-                                    <a href="#" class="stretched-link">Continue reading</a>
+                                    <a href="#" class="stretched-link">Przejdź do historii wina.</a>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +32,6 @@
             </ul>
         </div>
     </div>
-    tu będzie lista winek
 </main>
 
 </html>

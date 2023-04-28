@@ -11,19 +11,18 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-//    private final WineRepository wineRepository;
-//
-//    public HomeController(WineRepository wineRepository) {
-//        this.wineRepository = wineRepository;
-//    }
+    private final WineRepository wineRepository;
+
+    public HomeController(WineRepository wineRepository) {
+        this.wineRepository = wineRepository;
+    }
 
     @GetMapping("/")
     public String home(Model model) {
-//        List<Wine> wines = wineRepository.findAll();
-//        model.addAttribute("wines", wines);
+        List<Wine> wines = wineRepository.findAll();
+        model.addAttribute("wines", wines);
         return "index";
     }
-
 
 
 }
