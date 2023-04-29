@@ -19,12 +19,12 @@ public class WineController {
         this.wineService = wineService;
     }
 
-    @GetMapping("/")
-    public String home(Model model) {
-        List<WineHomePageDto> wines = wineService.findAll();
-        model.addAttribute("wines", wines);
-        return "index";
-    }
+//    @GetMapping("/")
+//    public String home(Model model) {
+//        List<WineHomePageDto> wines = wineService.findAll();
+//        model.addAttribute("wines", wines);
+//        return "index";
+//    }
 
     @GetMapping("/wine/{id}")
     public String getWine(@PathVariable long id, Model model) {
