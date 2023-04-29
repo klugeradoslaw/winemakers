@@ -1,4 +1,4 @@
-package pl.klugeradoslaw.winemakers;
+package pl.klugeradoslaw.winemakers.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
