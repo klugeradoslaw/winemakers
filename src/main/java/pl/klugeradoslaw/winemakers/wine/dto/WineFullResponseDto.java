@@ -1,6 +1,10 @@
 package pl.klugeradoslaw.winemakers.wine.dto;
 
+import pl.klugeradoslaw.winemakers.step.Step;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WineFullResponseDto {
     private Long id;
@@ -9,14 +13,16 @@ public class WineFullResponseDto {
     private String shortDescription;
     private String longDescription;
     private String status;
+    private List<Step> steps = new ArrayList<>();
 
-    public WineFullResponseDto(Long id, String name, LocalDate dateOfStart, String shortDescription, String longDescription, String status) {
+    public WineFullResponseDto(Long id, String name, LocalDate dateOfStart, String shortDescription, String longDescription, String status, List<Step> steps) {
         this.id = id;
         this.name = name;
         this.dateOfStart = dateOfStart;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.status = status;
+        this.steps = steps;
     }
 
     public Long getId() {
@@ -65,6 +71,14 @@ public class WineFullResponseDto {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public List<Step> getSteps() {
+        return steps;
+    }
+
+    public void setSteps(List<Step> steps) {
+        this.steps = steps;
     }
 }
 

@@ -21,7 +21,8 @@ public class WineDtoMapper {
                 wine.getDateOfStart(),
                 wine.getShortDescription(),
                 wine.getLongDescription(),
-                wine.getStatus().toString()
+                wine.getStatus().toString(),
+                wine.getSteps().stream().toList()
         );
     }
 }

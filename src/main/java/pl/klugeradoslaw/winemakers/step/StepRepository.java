@@ -1,8 +1,8 @@
-package pl.klugeradoslaw.winemakers.wine;
+package pl.klugeradoslaw.winemakers.step;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface WineRepository extends JpaRepository<Wine, Long> {
+public interface StepRepository extends JpaRepository<Step, Long> {
 }

@@ -20,4 +20,27 @@ public class Step {
     public Step() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getDateOfStep() {
+        return dateOfStep;
+    }
+
+    public void setDateOfStep(LocalDate dateOfStep) {
+        this.dateOfStep = dateOfStep;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
