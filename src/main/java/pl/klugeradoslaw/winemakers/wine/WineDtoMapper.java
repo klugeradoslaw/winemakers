@@ -1,7 +1,11 @@
 package pl.klugeradoslaw.winemakers.wine;
 
+import pl.klugeradoslaw.winemakers.step.StepDtoMapper;
+import pl.klugeradoslaw.winemakers.step.dto.StepFullResponseDto;
 import pl.klugeradoslaw.winemakers.wine.dto.WineFullResponseDto;
 import pl.klugeradoslaw.winemakers.wine.dto.WineHomePageDto;
+
+import java.util.List;
 
 public class WineDtoMapper {
     static WineHomePageDto mapHomePage(Wine wine) {
@@ -13,16 +17,19 @@ public class WineDtoMapper {
                 wine.getStatus().toString()
         );
 
-        }
+    }
+
     static WineFullResponseDto mapFullResponse(Wine wine) {
-        return new WineFullResponseDto(
-                wine.getId(),
-                wine.getName(),
-                wine.getDateOfStart(),
-                wine.getShortDescription(),
-                wine.getLongDescription(),
-                wine.getStatus().toString(),
-                wine.getSteps().stream().toList()
-        );
+        List<StepFullResponseDto> steps = wine.getSteps().stream().map(StepDtoMapper::mapFullResponse).toList();
+        WineFullResponseDto dto = new WineFullResponseDto();
+        dto.setId(wine.getId());
+        dto.setName(wine.getName());
+        dto.setDateOfStart(wine.getDateOfStart());
+        dto.setShortDescription(wine.getShortDescription());
+        dto.setLongDescription(wine.getLongDescription());
+        dto.setStatus(wine.getStatus().toString());
+        dto.setSteps(steps);
+
+        return dto;
     }
 }

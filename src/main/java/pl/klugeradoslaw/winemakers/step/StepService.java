@@ -14,7 +14,7 @@ public class StepService {
         this.stepRepository = stepRepository;
     }
 
-    public List<StepFullResponseDto> findAllStepsByWineId(long id) {
+    public List<StepFullResponseDto> findAll() {
         return stepRepository.findAll()
                 .stream()
                 .map(StepDtoMapper::mapFullResponse)
