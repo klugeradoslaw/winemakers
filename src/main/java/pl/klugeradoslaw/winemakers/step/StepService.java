@@ -21,4 +21,8 @@ public class StepService {
                 .toList();
     }
 
+    public Step addStep(Step step) {
+        return stepRepository.save(step);
+    }
+
 }
