@@ -11,13 +11,15 @@ public class WineHomePageDto {
     private LocalDate dateOfStart;
     private String shortDescription;
     private String status;
+    private String photo;
 
-    public WineHomePageDto(Long id, String name, LocalDate dateOfStart, String shortDescription, String status) {
+    public WineHomePageDto(Long id, String name, LocalDate dateOfStart, String shortDescription, String status, String photo) {
         this.id = id;
         this.name = name;
         this.dateOfStart = dateOfStart;
         this.shortDescription = shortDescription;
         this.status = status;
+        this.photo = photo;
     }
 
     public Long getId() {

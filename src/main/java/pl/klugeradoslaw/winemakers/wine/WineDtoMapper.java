@@ -14,7 +14,8 @@ public class WineDtoMapper {
                 wine.getName(),
                 wine.getDateOfStart(),
                 wine.getShortDescription(),
-                wine.getStatus().toString()
+                wine.getStatus().toString(),
+                wine.getPhoto()
         );
 
     }
@@ -29,6 +30,7 @@ public class WineDtoMapper {
         dto.setLongDescription(wine.getLongDescription());
         dto.setStatus(wine.getStatus().toString());
         dto.setSteps(steps);
+        dto.setPhoto(wine.getPhoto());
 
         return dto;
     }

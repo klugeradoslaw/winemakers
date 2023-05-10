@@ -1,13 +1,13 @@
 package pl.klugeradoslaw.winemakers.wine.dto;
 
-import pl.klugeradoslaw.winemakers.step.Step;
+import org.springframework.web.multipart.MultipartFile;
 import pl.klugeradoslaw.winemakers.step.dto.StepFullResponseDto;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WineFullResponseDto {
+public class WineSaveDto {
     private Long id;
     private String name;
     private LocalDate dateOfStart;
@@ -15,9 +15,9 @@ public class WineFullResponseDto {
     private String longDescription;
     private String status;
     private List<StepFullResponseDto> steps = new ArrayList<>();
-    private String photo;
+    private MultipartFile photo;
 
-    public WineFullResponseDto(Long id, String name, LocalDate dateOfStart, String shortDescription, String longDescription, String status, List<StepFullResponseDto> steps, String photo) {
+    public WineSaveDto(Long id, String name, LocalDate dateOfStart, String shortDescription, String longDescription, String status, List<StepFullResponseDto> steps, MultipartFile photo) {
         this.id = id;
         this.name = name;
         this.dateOfStart = dateOfStart;
@@ -28,7 +28,7 @@ public class WineFullResponseDto {
         this.photo = photo;
     }
 
-    public WineFullResponseDto() {
+    public WineSaveDto() {
     }
 
     public Long getId() {
@@ -88,11 +88,11 @@ public class WineFullResponseDto {
         this.steps = steps;
     }
 
-    public String getPhoto() {
+    public MultipartFile getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(MultipartFile photo) {
         this.photo = photo;
     }
 }

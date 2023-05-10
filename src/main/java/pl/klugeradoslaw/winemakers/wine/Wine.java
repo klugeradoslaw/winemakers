@@ -23,6 +23,7 @@ public class Wine {
     @OneToMany
     @JoinColumn(name = "wine_id")
     private List<Step> steps = new ArrayList<>();
+    private String photo;
 
     public Long getId() {
         return id;
@@ -78,5 +79,13 @@ public class Wine {
 
     public void setSteps(List<Step> steps) {
         this.steps = steps;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }
