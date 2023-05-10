@@ -5,9 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import pl.klugeradoslaw.winemakers.wine.WineService;
+import pl.klugeradoslaw.winemakers.wine.WineStatus;
 import pl.klugeradoslaw.winemakers.wine.dto.WineFullResponseDto;
 import pl.klugeradoslaw.winemakers.wine.dto.WineHomePageDto;
+import pl.klugeradoslaw.winemakers.wine.dto.WineSaveDto;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +36,14 @@ public class WineController {
         return "wine";
     };
 
+    @GetMapping("/wine/new")
+    public String newWineForm(Model model) {
+        List<WineStatus> allStatuses = Arrays.asList(WineStatus.values());
+        model.addAttribute("status", allStatuses);
+        WineSaveDto wine = new WineSaveDto();
+        model.addAttribute("wine", wine);
+        return "create_wine";
+    }
 
 
 }
