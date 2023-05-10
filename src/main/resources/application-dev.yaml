@@ -4,6 +4,12 @@ spring:
   liquibase:
     contexts: dev
     change-log: classpath:db/changelog/master.xml
+  web:
+    resources:
+      static-locations: classpath:/static/,file:./uploads/
   jpa:
     hibernate:
       ddl-auto: validate
+app:
+  storage:
+    location: ./uploads/
