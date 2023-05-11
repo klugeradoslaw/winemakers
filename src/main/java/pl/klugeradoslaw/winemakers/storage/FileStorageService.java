@@ -2,6 +2,7 @@ package pl.klugeradoslaw.winemakers.storage;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
@@ -12,14 +13,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+
+
+@Service
 public class FileStorageService {
     private final String fileStorageLocation;
     private final String imageStorageLocation;
 
-    public FileStorageService(String fileStorageLocation, String imageStorageLocation) {
-        this.fileStorageLocation = fileStorageLocation;
-        this.imageStorageLocation = imageStorageLocation;
-    }
+
     public FileStorageService(@Value("${app.storage.location}") String storageLocation) throws FileNotFoundException {
         this.fileStorageLocation = storageLocation + "/files/";
         this.imageStorageLocation = storageLocation + "/img/";

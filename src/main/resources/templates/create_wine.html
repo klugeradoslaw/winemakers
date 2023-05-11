@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<main layout:fragment="content">
+    <h1 class=text-center> Add new wine to your winery </h1>
+    <div class="col-md-4 container justify-content-center">
+        <form action="/wines" th:object="${wine}" method="post" enctype="multipart/form-data">
+
+
+            <div class="form-group">
+                <label for="name">Name of wine: </label>
+                <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Enter wine name"/>
+            </div>
+
+            <div class="form-group">
+                <label for="dateOfStart">Date of start: </label>
+                <input type="date" id="dateOfStart" th:field="*{dateOfStart}" class="form-control"
+                       placeholder="Enter date of start"/>
+            </div>
+
+            <div class="form-group">
+                <label for="shortDescription">Short Description:</label>
+                <input type="text" id="shortDescription" th:field="*{shortDescription}" class="form-control"
+                       placeholder="Enter short description"/>
+            </div>
+
+            <div class="form-group">
+                <label for="longDescription">Short Description:</label>
+                <input type="text" id="longDescription" th:field="*{longDescription}" class="form-control"
+                       placeholder="Enter long description"/>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Short Description:</label>
+                <select id="status" th:field="*{status}" required class="form-control">
+                    <option value="" hidden>Choose status</option>
+                    <option th:each="status:${statuses}" th:value="${status.name}"
+                            th:text="${status.name}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="photo">Input photo:</label>
+                <input type="file" id="photo" th:field="*{photo}" accept="image/png, image/jpeg">
+            </div>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">
+                    Add new wine!
+                </button>
+            </div>
+        </form>
+
+    </div>
+</main>
+</html>

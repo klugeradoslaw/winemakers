@@ -10,6 +10,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+
 app:
   storage:
     location: ./uploads/

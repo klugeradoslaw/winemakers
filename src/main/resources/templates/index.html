@@ -12,7 +12,8 @@
                     <div class="card m-3">
                         <div class="row g-0">
                             <div class="col-md-2">
-                                <img src="/img/place-holder.jpg" class="img-fluid rounded-start card-img" alt="wine"/>
+                                <img src="/img/place-holder.jpg" th:src="${wine.photo ne null} ? @{/img/${wine.photo}} : @{/img/place-holder.jpg}"
+                                     class="img-fluid rounded-start card-img" alt="wine"/>
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">

@@ -3,7 +3,9 @@ package pl.klugeradoslaw.winemakers.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.klugeradoslaw.winemakers.wine.WineService;
 import pl.klugeradoslaw.winemakers.wine.WineStatus;
 import pl.klugeradoslaw.winemakers.wine.dto.WineFullResponseDto;
@@ -39,11 +41,16 @@ public class WineController {
     @GetMapping("/wine/new")
     public String newWineForm(Model model) {
         List<WineStatus> allStatuses = Arrays.asList(WineStatus.values());
-        model.addAttribute("status", allStatuses);
+        model.addAttribute("statuses", allStatuses);
         WineSaveDto wine = new WineSaveDto();
         model.addAttribute("wine", wine);
         return "create_wine";
     }
 
+    @PostMapping("/wines")
+    public String addWine(@ModelAttribute("wine") WineSaveDto wine) {
+        wineService.addWine(wine);
+        return "redirect:/wines";
+    }
 
 }
