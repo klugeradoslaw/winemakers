@@ -50,7 +50,7 @@ public class WineController {
     @PostMapping("/wines")
     public String addWine(@ModelAttribute("wine") WineSaveDto wine) {
         wineService.addWine(wine);
-        return "redirect:/wines";
+        return "redirect:/";
     }
 
 }

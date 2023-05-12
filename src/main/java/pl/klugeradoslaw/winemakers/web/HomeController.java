@@ -17,7 +17,7 @@ public class HomeController {
         this.wineService = wineService;
     }
 
-    @GetMapping("/wines")
+    @GetMapping("/")
     public String home(Model model) {
         List<WineHomePageDto> wines = wineService.findAll();
         model.addAttribute("wines", wines);

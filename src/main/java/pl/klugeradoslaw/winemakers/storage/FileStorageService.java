@@ -56,17 +56,17 @@ public class FileStorageService {
 
     private Path createFilePath(MultipartFile file, String storageLocation) {
         String originalFileName = file.getOriginalFilename();
-        String fileBaseName = FilenameUtils.getBaseName(originalFileName);
-        String fileExtension = FilenameUtils.getExtension(originalFileName);
-        String completeFilename;
-        Path filePath;
-        int fileIndex = 0;
-        do {
-            completeFilename = fileBaseName + fileIndex + "." + fileExtension;
-            filePath = Paths.get(storageLocation, completeFilename);
-            fileIndex++;
-        } while (Files.exists(filePath));
-        return filePath;
+            String fileBaseName = FilenameUtils.getBaseName(originalFileName);
+            String fileExtension = FilenameUtils.getExtension(originalFileName);
+            String completeFilename;
+            Path filePath;
+            int fileIndex = 0;
+            do {
+                completeFilename = fileBaseName + fileIndex + "." + fileExtension;
+                filePath = Paths.get(storageLocation, completeFilename);
+                fileIndex++;
+            } while (Files.exists(filePath));
+            return filePath;
     }
 }
 

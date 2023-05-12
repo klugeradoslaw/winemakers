@@ -9,14 +9,20 @@
         <div class="p-2 p-md-5 text-white rounded bg-dark">
             <div class="row g-0">
                 <div class="col-md-2">
-                    <img src="/img/place-holder.jpg" class="img-fluid rounded" alt="wine"/>
+                    <div th:if="${wine.photo eq null}">
+                        <img src="/img/place-holder.jpg" th:src="@{/img/place-holder.jpg}"
+                             class="img-fluid rounded-start" alt="wine"/>
+                    </div>
+                    <div th:if="${wine.photo ne null}">
+                        <img src="/img/place-holder.jpg" th:src="@{|/img/${wine.photo}|}"
+                             class="img-fluid rounded-start" alt="wine"/>
+                    </div>
                 </div>
                 <div class="col-md-8 ms-4">
                     <h1 th:text="${wine.name}">Title of a longer featured blog post</h1>
                     <p class="lead" th:text="${wine.longDescription}">Long wine description.</p>
 
                     <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
-                </div>
             </div>
         </div>
     </div>

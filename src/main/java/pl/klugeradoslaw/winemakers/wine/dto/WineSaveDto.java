@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WineSaveDto {
-    private Long id;
     private String name;
     private LocalDate dateOfStart;
     private String shortDescription;
@@ -17,8 +16,8 @@ public class WineSaveDto {
     private List<StepFullResponseDto> steps = new ArrayList<>();
     private MultipartFile photo;
 
-    public WineSaveDto(Long id, String name, LocalDate dateOfStart, String shortDescription, String longDescription, String status, List<StepFullResponseDto> steps, MultipartFile photo) {
-        this.id = id;
+    public WineSaveDto(String name, LocalDate dateOfStart, String shortDescription, String longDescription, String status, List<StepFullResponseDto> steps, MultipartFile photo) {
+
         this.name = name;
         this.dateOfStart = dateOfStart;
         this.shortDescription = shortDescription;
@@ -27,16 +26,7 @@ public class WineSaveDto {
         this.steps = steps;
         this.photo = photo;
     }
-
     public WineSaveDto() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
