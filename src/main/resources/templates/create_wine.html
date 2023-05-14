@@ -6,9 +6,7 @@
 <main layout:fragment="content">
     <h1 class=text-center> Add new wine to your winery </h1>
     <div class="col-md-4 container justify-content-center">
-        <form action="/wines" th:object="${wine}" method="post" enctype="multipart/form-data">
-
-
+        <form th:action="@{/}" th:object="${wine}" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Name of wine: </label>
                 <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Enter wine name"/>

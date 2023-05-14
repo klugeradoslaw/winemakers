@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.klugeradoslaw.winemakers.wine.WineService;
 import pl.klugeradoslaw.winemakers.wine.WineStatus;
 import pl.klugeradoslaw.winemakers.wine.dto.WineFullResponseDto;
@@ -24,12 +25,12 @@ public class WineController {
         this.wineService = wineService;
     }
 
-//    @GetMapping("/")
-//    public String home(Model model) {
-//        List<WineHomePageDto> wines = wineService.findAll();
-//        model.addAttribute("wines", wines);
-//        return "index";
-//    }
+    @GetMapping("/")
+    public String home(Model model) {
+        List<WineHomePageDto> wines = wineService.findAll();
+        model.addAttribute("wines", wines);
+        return "index";
+    }
 
     @GetMapping("/wine/{id}")
     public String getWine(@PathVariable long id, Model model) {
@@ -47,7 +48,7 @@ public class WineController {
         return "create_wine";
     }
 
-    @PostMapping("/wines")
+    @PostMapping("/")
     public String addWine(@ModelAttribute("wine") WineSaveDto wine) {
         wineService.addWine(wine);
         return "redirect:/";
