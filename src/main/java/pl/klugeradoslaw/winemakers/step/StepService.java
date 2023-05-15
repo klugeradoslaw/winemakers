@@ -2,6 +2,7 @@ package pl.klugeradoslaw.winemakers.step;
 
 import org.springframework.stereotype.Service;
 import pl.klugeradoslaw.winemakers.step.dto.StepFullResponseDto;
+import pl.klugeradoslaw.winemakers.step.dto.StepSaveDto;
 
 import java.util.List;
 
@@ -21,8 +22,10 @@ public class StepService {
                 .toList();
     }
 
-    public Step addStep(Step step) {
-        return stepRepository.save(step);
+    public void addStep(StepSaveDto stepSaveDto) {
+        Step step = new Step();
+        step.setDateOfStep(stepSaveDto.getDateOfStep());
+        step.setDescription(stepSaveDto.getDescription());
+        stepRepository.save(step);
     }
-
 }
