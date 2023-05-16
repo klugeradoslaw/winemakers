@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.klugeradoslaw.winemakers.common.Message;
 import pl.klugeradoslaw.winemakers.wine.WineService;
 import pl.klugeradoslaw.winemakers.wine.WineStatus;
 import pl.klugeradoslaw.winemakers.wine.dto.WineFullResponseDto;
@@ -48,10 +49,13 @@ public class WineController {
         return "create_wine";
     }
 
-    @PostMapping("/")
-    public String addWine(@ModelAttribute("wine") WineSaveDto wine) {
+    @PostMapping("/wine/add")
+    public String addWine(@ModelAttribute("wine") WineSaveDto wine, Model model) {
         wineService.addWine(wine);
-        return "redirect:/";
+        model.addAttribute("message", new Message("Sukces!", "Nowe wino zostało dodane do bazy danych!"));
+        return "message";
     }
+
+
 
 }
