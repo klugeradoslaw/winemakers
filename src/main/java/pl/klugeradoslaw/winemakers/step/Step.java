@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.*;
-import pl.klugeradoslaw.winemakers.wine.Wine;
 
 import java.time.LocalDate;
 
@@ -16,9 +15,8 @@ public class Step {
     private Long id;
     private LocalDate dateOfStep;
     private String description;
-
-    public Step() {
-    }
+    @Column(name = "wine_id")
+    private Long wineId;
 
     public Long getId() {
         return id;
@@ -42,5 +40,13 @@ public class Step {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getWineId() {
+        return wineId;
+    }
+
+    public void setWineId(Long wineId) {
+        this.wineId = wineId;
     }
 }

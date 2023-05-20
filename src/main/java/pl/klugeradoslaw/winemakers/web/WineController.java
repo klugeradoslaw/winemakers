@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.klugeradoslaw.winemakers.common.Message;
+import pl.klugeradoslaw.winemakers.step.StepService;
+import pl.klugeradoslaw.winemakers.step.dto.StepSaveDto;
 import pl.klugeradoslaw.winemakers.wine.WineService;
 import pl.klugeradoslaw.winemakers.wine.WineStatus;
 import pl.klugeradoslaw.winemakers.wine.dto.WineFullResponseDto;
@@ -21,9 +23,11 @@ import java.util.Optional;
 @Controller
 public class WineController {
     private final WineService wineService;
+    private final StepService stepService;
 
-    public WineController(WineService wineService) {
+    public WineController(WineService wineService, StepService stepService) {
         this.wineService = wineService;
+        this.stepService = stepService;
     }
 
     @GetMapping("/")
@@ -37,8 +41,10 @@ public class WineController {
     public String getWine(@PathVariable long id, Model model) {
         Optional<WineFullResponseDto> optionalWine = wineService.findWineById(id);
         optionalWine.ifPresent(wine -> model.addAttribute("wine", wine));
+        StepSaveDto step = new StepSaveDto();
+        model.addAttribute("step", step);
         return "wine";
-    };
+    }
 
     @GetMapping("/wine/new")
     public String newWineForm(Model model) {
@@ -49,6 +55,7 @@ public class WineController {
         return "create_wine";
     }
 
+//czy @modelattribute jest potrzebne?
     @PostMapping("/wine/add")
     public String addWine(@ModelAttribute("wine") WineSaveDto wine, Model model) {
         wineService.addWine(wine);
@@ -56,6 +63,14 @@ public class WineController {
         return "message";
     }
 
-
+    @PostMapping("/wine/{id}/step/add")
+    public String addStepToWine(@PathVariable Long id, StepSaveDto step, Model model) {
+        Optional<WineFullResponseDto> optionalWine = wineService.findWineById(id);
+        optionalWine.ifPresent(wine -> model.addAttribute("wine", wine));
+        wineService.addStep(id, step);
+        model.addAttribute("step", step);
+        model.addAttribute("message", new Message("Sukces!", "Dnia " + step.getDateOfStep() + " dodano kolejny etap wina o treści: " + step.getDescription()));
+        return "message";
+    }
 
 }

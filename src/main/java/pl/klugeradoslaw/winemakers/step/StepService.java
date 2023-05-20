@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.klugeradoslaw.winemakers.step.dto.StepFullResponseDto;
 import pl.klugeradoslaw.winemakers.step.dto.StepSaveDto;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -20,12 +21,5 @@ public class StepService {
                 .stream()
                 .map(StepDtoMapper::mapFullResponse)
                 .toList();
-    }
-
-    public void addStep(StepSaveDto stepSaveDto) {
-        Step step = new Step();
-        step.setDateOfStep(stepSaveDto.getDateOfStep());
-        step.setDescription(stepSaveDto.getDescription());
-        stepRepository.save(step);
     }
 }
