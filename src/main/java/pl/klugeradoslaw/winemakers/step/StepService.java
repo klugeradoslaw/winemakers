@@ -22,4 +22,12 @@ public class StepService {
                 .map(StepDtoMapper::mapFullResponse)
                 .toList();
     }
+
+    public void addStep(long id, StepSaveDto stepSaveDto) {
+        Step step = new Step();
+        step.setDateOfStep(stepSaveDto.getDateOfStep());
+        step.setDescription(stepSaveDto.getDescription());
+        step.setWineId(id);
+        stepRepository.save(step);
+    }
 }

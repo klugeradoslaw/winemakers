@@ -61,12 +61,4 @@ public class WineServiceImpl implements WineService {
         wineRepository.save(wine);
     }
 
-    @Override
-    public void addStep(long id, StepSaveDto stepSaveDto) {
-        Step step = new Step();
-        step.setDateOfStep(LocalDate.now());
-        step.setDescription(stepSaveDto.getDescription());
-        step.setWineId(id);
-        stepRepository.save(step);
-    }
 }

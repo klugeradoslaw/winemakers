@@ -16,6 +16,5 @@ public interface WineService {
     public List<WineHomePageDto> findAll();
     public Optional<WineFullResponseDto> findWineById(long id);
     public void addWine(WineSaveDto wineToSave);
-    public void addStep(long id, StepSaveDto stepSaveDto);
 
 }

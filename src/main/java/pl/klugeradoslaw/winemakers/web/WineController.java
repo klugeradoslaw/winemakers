@@ -16,6 +16,7 @@ import pl.klugeradoslaw.winemakers.wine.dto.WineFullResponseDto;
 import pl.klugeradoslaw.winemakers.wine.dto.WineHomePageDto;
 import pl.klugeradoslaw.winemakers.wine.dto.WineSaveDto;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -55,22 +56,10 @@ public class WineController {
         return "create_wine";
     }
 
-//czy @modelattribute jest potrzebne?
     @PostMapping("/wine/add")
     public String addWine(@ModelAttribute("wine") WineSaveDto wine, Model model) {
         wineService.addWine(wine);
         model.addAttribute("message", new Message("Sukces!", "Nowe wino zostało dodane do bazy danych!"));
         return "message";
     }
-
-    @PostMapping("/wine/{id}/step/add")
-    public String addStepToWine(@PathVariable Long id, StepSaveDto step, Model model) {
-        Optional<WineFullResponseDto> optionalWine = wineService.findWineById(id);
-        optionalWine.ifPresent(wine -> model.addAttribute("wine", wine));
-        wineService.addStep(id, step);
-        model.addAttribute("step", step);
-        model.addAttribute("message", new Message("Sukces!", "Dnia " + step.getDateOfStep() + " dodano kolejny etap wina o treści: " + step.getDescription()));
-        return "message";
-    }
-
 }
