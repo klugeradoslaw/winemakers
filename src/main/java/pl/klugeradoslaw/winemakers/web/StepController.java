@@ -20,7 +20,7 @@ public class StepController {
     }
 
     @PostMapping("/wine/{id}/step/add")
-    public String addStepToWine(@PathVariable Long id, StepSaveDto step, Model model) {
+    public String addStepToWine(@PathVariable long id, StepSaveDto step, Model model) {
         step.setDateOfStep(LocalDate.now());
         stepService.addStep(id, step);
         model.addAttribute("step", step);
