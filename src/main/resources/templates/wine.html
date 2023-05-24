@@ -36,31 +36,35 @@
                         </div>
                     </form>
 
+                </div>
+                <div class="col-md-4">
+                    <a th:href="@{|/wine/${wine.id}/delete|}" class="btn btn-danger">Delete wine</a>
+                </div>
+
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row mb-2 py-2">
-            <ul>
-                <li th:each="step:${wine.steps}">
-                    <div class="card m-3">
-                        <div class="row g-0">
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <p class="card-text" th:text="${step.description}">Krotki opis wina.</p>
-                                    <p class="card-text">
-                                        <small class="text-muted" th:text="'Dodano ' + ${step.dateOfStep}">Utworzono...</small>
-                                    </p>
+        <div class="container">
+            <div class="row mb-2 py-2">
+                <ul>
+                    <li th:each="step:${wine.steps}">
+                        <div class="card m-3">
+                            <div class="row g-0">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p class="card-text" th:text="${step.description}">Krotki opis wina.</p>
+                                        <p class="card-text">
+                                            <small class="text-muted" th:text="'Dodano ' + ${step.dateOfStep}">Utworzono...</small>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
 
 </main>

@@ -2,10 +2,7 @@ package pl.klugeradoslaw.winemakers.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.klugeradoslaw.winemakers.common.Message;
 import pl.klugeradoslaw.winemakers.step.StepService;
@@ -24,11 +21,9 @@ import java.util.Optional;
 @Controller
 public class WineController {
     private final WineService wineService;
-    private final StepService stepService;
 
-    public WineController(WineService wineService, StepService stepService) {
+    public WineController(WineService wineService) {
         this.wineService = wineService;
-        this.stepService = stepService;
     }
 
     @GetMapping("/")
@@ -60,6 +55,14 @@ public class WineController {
     public String addWine(@ModelAttribute("wine") WineSaveDto wine, Model model) {
         wineService.addWine(wine);
         model.addAttribute("message", new Message("Sukces!", "Nowe wino zostało dodane do bazy danych!"));
+        return "message";
+    }
+
+    @GetMapping("/wine/{id}/delete")
+    public String deleteWine(@PathVariable Long id, Model model) {
+        model.addAttribute("wine", wineService.findWineById(id));
+        wineService.deleteWineById(id);
+        model.addAttribute("message", new Message("Wine deleted", "Wine deleted correctly."));
         return "message";
     }
 }

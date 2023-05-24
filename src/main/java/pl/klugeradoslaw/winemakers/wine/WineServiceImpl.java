@@ -61,4 +61,9 @@ public class WineServiceImpl implements WineService {
         wineRepository.save(wine);
     }
 
+    @Override
+    public void deleteWineById(Long id) {
+        stepService.deleteAllStepsByWineId(id);
+        wineRepository.deleteById(id);
+    }
 }

@@ -30,4 +30,11 @@ public class StepService {
         step.setWineId(id);
         stepRepository.save(step);
     }
+
+    public void deleteAllStepsByWineId(Long id) {
+        List<Step> stepsToDelete = stepRepository.findByWineId(id);
+        for (Step step : stepsToDelete) {
+            stepRepository.delete(step);
+        }
+    }
 }
