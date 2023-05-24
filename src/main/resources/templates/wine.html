@@ -11,15 +11,15 @@
                 <div class="col-md-2">
                     <div th:if="${wine.photo eq null}">
                         <img src="/img/place-holder.jpg" th:src="@{/img/place-holder.jpg}"
-                             class="img-fluid rounded-start" alt="wine"/>
+                             class="img-fluid rounded" alt="wine"/>
                     </div>
                     <div th:if="${wine.photo ne null}">
                         <img src="/img/place-holder.jpg" th:src="@{|/img/${wine.photo}|}"
-                             class="img-fluid rounded-start" alt="wine"/>
+                             class="img-fluid rounded" alt="wine"/>
                     </div>
                 </div>
                 <div class="col-md-8 ms-4">
-                    <h1 th:text="${wine.name}">Title of a longer featured blog post</h1>
+                    <h1 th:text="${wine.name}">Wine name</h1>
                     <p class="lead" th:text="${wine.longDescription}">Long wine description.</p>
 
                     <form th:action="@{|/wine/${wine.id}/step/add|}" th:object="${step}" method="post">
@@ -29,42 +29,41 @@
                                    placeholder="Step description"/>
                         </div>
                         <div class="box-footer">
-
                             <button type="submit" class="btn btn-primary">
                                 Add new step!
                             </button>
                         </div>
                     </form>
-
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-1 text-center">
                     <a th:href="@{|/wine/${wine.id}/delete|}" class="btn btn-danger">Delete wine</a>
                 </div>
-
             </div>
         </div>
-        <div class="container">
-            <div class="row mb-2 py-2">
-                <ul>
-                    <li th:each="step:${wine.steps}">
-                        <div class="card m-3">
-                            <div class="row g-0">
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <p class="card-text" th:text="${step.description}">Krotki opis wina.</p>
-                                        <p class="card-text">
-                                            <small class="text-muted" th:text="'Dodano ' + ${step.dateOfStep}">Utworzono...</small>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
+    </div>
+    <div class="container">
+        <div class="row mb-2 py-2">
+            <ul>
+                <li th:each="step:${wine.steps}">
+                    <div class="card m-3">
+                        <div class="row g-0">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <p class="card-text" th:text="${step.description}">Krotki opis wina.</p>
+                                    <p class="card-text">
+                                        <small class="text-muted"
+                                               th:text="'Dodano ' + ${step.dateOfStep}">Utworzono...</small>
+                                    </p>
                                 </div>
                             </div>
+                            <div class="col-md-2">
+                            </div>
                         </div>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                </li>
+            </ul>
         </div>
+    </div>
 
 
 </main>
