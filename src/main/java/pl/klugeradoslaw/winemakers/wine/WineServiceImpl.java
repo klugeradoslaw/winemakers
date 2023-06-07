@@ -1,6 +1,7 @@
 package pl.klugeradoslaw.winemakers.wine;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import pl.klugeradoslaw.winemakers.step.Step;
 import pl.klugeradoslaw.winemakers.step.StepDtoMapper;
 import pl.klugeradoslaw.winemakers.step.StepRepository;
@@ -11,7 +12,9 @@ import pl.klugeradoslaw.winemakers.storage.FileStorageService;
 import pl.klugeradoslaw.winemakers.wine.dto.WineFullResponseDto;
 import pl.klugeradoslaw.winemakers.wine.dto.WineHomePageDto;
 import pl.klugeradoslaw.winemakers.wine.dto.WineSaveDto;
+import pl.klugeradoslaw.winemakers.wine.dto.WineToUpdateDto;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +48,7 @@ public class WineServiceImpl implements WineService {
         return wineRepository.findById(id).map(WineDtoMapper::mapFullResponse);
     }
 
+
     @Override
     public void addWine(WineSaveDto wineToSave) {
         Wine wine = new Wine();
@@ -65,5 +69,21 @@ public class WineServiceImpl implements WineService {
     public void deleteWineById(Long id) {
         stepService.deleteAllStepsByWineId(id);
         wineRepository.deleteById(id);
+    }
+
+    // wyjątek do dodania
+    @Override
+    public void updateWine(long wineId, WineToUpdateDto wineDto) {
+        Optional<Wine> optionalWine = wineRepository.findById(wineId);
+        if (optionalWine.isPresent()) {
+            Wine wine = optionalWine.get();
+            wine.setName(wineDto.getName());
+            wine.setShortDescription(wineDto.getShortDescription());
+            wine.setLongDescription(wineDto.getLongDescription());
+            wine.setStatus(WineStatus.valueOf(wineDto.getStatus()));
+            wineRepository.save(wine);
+        } else {
+            throw new RuntimeException();
+        }
     }
 }

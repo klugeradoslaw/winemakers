@@ -12,6 +12,7 @@ import pl.klugeradoslaw.winemakers.wine.WineStatus;
 import pl.klugeradoslaw.winemakers.wine.dto.WineFullResponseDto;
 import pl.klugeradoslaw.winemakers.wine.dto.WineHomePageDto;
 import pl.klugeradoslaw.winemakers.wine.dto.WineSaveDto;
+import pl.klugeradoslaw.winemakers.wine.dto.WineToUpdateDto;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -51,12 +52,6 @@ public class WineController {
         return "create_wine";
     }
 
-    @PostMapping("/wine/add")
-    public String addWine(@ModelAttribute("wine") WineSaveDto wine, Model model) {
-        wineService.addWine(wine);
-        model.addAttribute("message", new Message("Sukces!", "Nowe wino zostało dodane do bazy danych!"));
-        return "message";
-    }
 
     @GetMapping("/wine/{id}/delete")
     public String deleteWine(@PathVariable long id, Model model) {
@@ -65,4 +60,34 @@ public class WineController {
         model.addAttribute("message", new Message("Wine deleted", "Wine deleted correctly."));
         return "message";
     }
+
+
+    @PostMapping("/wine/add")
+    public String addWine(@ModelAttribute("wine") WineSaveDto wine, Model model) {
+        wineService.addWine(wine);
+        model.addAttribute("message", new Message("Sukces!", "Nowe wino zostało dodane do bazy danych!"));
+        return "message";
+    }
+
+
+    @GetMapping("/wine/{id}/edit")
+    public String editWineForm(@PathVariable long id, Model model) {
+        List<WineStatus> allStatuses = Arrays.asList(WineStatus.values());
+        model.addAttribute("statuses", allStatuses);
+
+        Optional<WineFullResponseDto> optionalWine = wineService.findWineById(id);
+        optionalWine.ifPresent(wine -> model.addAttribute("wine", wine));
+
+        return "edit_wine";
+    }
+
+
+    @PostMapping("/wine/{id}/edited")
+    public String updateWine(@PathVariable Long id, WineToUpdateDto wineToUpdate, Model model) {
+        wineService.updateWine(id, wineToUpdate);
+        model.addAttribute("wine", wineToUpdate);
+        model.addAttribute("message", new Message("Sukces!", "Wino zostało zaktualizowane!"));
+        return "message";
+    }
+
 }

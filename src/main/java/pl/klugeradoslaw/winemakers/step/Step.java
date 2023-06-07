@@ -18,6 +18,9 @@ public class Step {
     @Column(name = "wine_id")
     private Long wineId;
 
+    public Step() {
+    }
+
     public Long getId() {
         return id;
     }

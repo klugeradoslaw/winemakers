@@ -18,26 +18,28 @@
                              class="img-fluid rounded" alt="wine"/>
                     </div>
                 </div>
-                <div class="col-md-8 ms-4">
-                    <h1 th:text="${wine.name}">Wine name</h1>
-                    <p class="lead" th:text="${wine.longDescription}">Long wine description.</p>
+                <div class="col-md-8">
+                    <div class="ms-4 me-4">
+                        <h1 th:text="${wine.name}">Wine name</h1>
+                        <p class="lead" th:text="${wine.longDescription}">Long wine description.</p>
 
-                    <form th:action="@{|/wine/${wine.id}/step/add|}" th:object="${step}" method="post">
-                        <div class="form-group">
-                            <label for="description">Step description: </label>
-                            <input type="text" id="description" th:field="*{description}" class="form-control"
-                                   placeholder="Step description"/>
-                        </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">
-                                Add new step!
-                            </button>
-                        </div>
-                    </form>
+                        <form th:action="@{|/wine/${wine.id}/step/add|}" th:object="${step}" method="post">
+                            <div class="form-group">
+                                <label for="description">Step description: </label>
+                                <input type="text" id="description" th:field="*{description}" class="form-control"
+                                       placeholder="Step description"/>
+                            </div>
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">
+                                    Add new step!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-md-1 text-center">
-                    <a th:href="@{|/wine/${wine.id}/delete|}" class="btn btn-danger">Delete wine</a>
-                </div>
+                <div class="col-md-2">
+                    <a th:href="@{|/wine/${wine.id}/delete|}" class="btn btn-danger w-100">Delete wine</a>
+                    <a th:href="@{|/wine/${wine.id}/edit|}" class="btn btn-primary w-100">Edit wine</a>
             </div>
         </div>
     </div>

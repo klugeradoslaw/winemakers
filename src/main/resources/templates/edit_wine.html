@@ -4,18 +4,13 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
 <main layout:fragment="content">
-    <h1 class=text-center> Add new wine to your winery </h1>
+    <h1 class=text-center> Wine edit form </h1>
     <div class="col-md-4 container justify-content-center">
-        <form th:action="@{/wine/add}" th:object="${wine}" method="post" enctype="multipart/form-data">
+        <form th:action="@{/wine/{id}/edited(id=${wine.id})}" th:object="${wine}" method="post" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{id}" />
             <div class="form-group">
                 <label for="name">Name of wine: </label>
                 <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Enter wine name"/>
-            </div>
-
-            <div class="form-group">
-                <label for="dateOfStart">Date of start: </label>
-                <input type="date" id="dateOfStart" th:field="*{dateOfStart}" class="form-control"
-                       placeholder="Enter date of start"/>
             </div>
 
             <div class="form-group">
@@ -31,7 +26,7 @@
             </div>
 
             <div class="form-group">
-                <label for="status">Short Description:</label>
+                <label for="status">Status: </label>
                 <select id="status" th:field="*{status}" required class="form-control">
                     <option value="" hidden>Choose status</option>
                     <option th:each="status:${statuses}" th:value="${status}"
@@ -39,14 +34,9 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="photo">Input photo:</label>
-                <input type="file" id="photo" th:field="*{photo}" accept="image/png, image/jpeg" required>
-            </div>
-
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary">
-                    Add new wine!
+                    Confirm changes
                 </button>
             </div>
         </form>
