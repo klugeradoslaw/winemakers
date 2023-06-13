@@ -49,10 +49,12 @@ public class StepService {
         if (optionalWine.isPresent()) {
             Wine wine = optionalWine.get();
             List<Step> steps = wine.getSteps();
-            steps.removeIf(step -> step.getId().equals(stepId));
+            stepRepository.deleteById(stepId);
+            //steps.removeIf(step -> step.getId().equals(stepId));
             wineRepository.save(wine);
         } else {
             throw new RuntimeException();
         }
     }
+
 }
