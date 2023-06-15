@@ -38,9 +38,7 @@ public class StepService {
 
     public void deleteAllStepsByWineId(Long id) {
         List<Step> stepsToDelete = stepRepository.findByWineId(id);
-        for (Step step : stepsToDelete) {
-            stepRepository.delete(step);
-        }
+        stepRepository.deleteAll(stepsToDelete);
     }
 
     public void deleteStep(Long wineId, Long stepId) {
