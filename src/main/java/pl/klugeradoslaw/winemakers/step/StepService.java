@@ -43,14 +43,11 @@ public class StepService {
         }
     }
 
-    //wyjatek do dodania
     public void deleteStep(Long wineId, Long stepId) {
         Optional<Wine> optionalWine = wineRepository.findById(wineId);
         if (optionalWine.isPresent()) {
             Wine wine = optionalWine.get();
-            List<Step> steps = wine.getSteps();
             stepRepository.deleteById(stepId);
-            //steps.removeIf(step -> step.getId().equals(stepId));
             wineRepository.save(wine);
         } else {
             throw new RuntimeException();
