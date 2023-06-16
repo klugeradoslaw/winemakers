@@ -26,7 +26,6 @@ public class StepController {
         step.setDateOfStep(LocalDate.now());
         stepService.addStep(id, step);
         model.addAttribute("step", step);
-        model.addAttribute("message", new Message("Sukces!", "Dnia " + step.getDateOfStep() + " dodano kolejny etap wina o treści: " + step.getDescription()));
         return "redirect:/wine/{id}";
     }
 
