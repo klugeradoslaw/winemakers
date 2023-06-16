@@ -27,7 +27,7 @@ public class StepController {
         stepService.addStep(id, step);
         model.addAttribute("step", step);
         model.addAttribute("message", new Message("Sukces!", "Dnia " + step.getDateOfStep() + " dodano kolejny etap wina o treści: " + step.getDescription()));
-        return "message";
+        return "redirect:/wine/{id}";
     }
 
     @GetMapping("/wine/{wineId}/steps/{stepId}/delete")
