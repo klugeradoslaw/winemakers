@@ -30,16 +30,18 @@
                                        placeholder="Step description"/>
                             </div>
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-secondary">
                                     Add new step!
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col-md-2 align-self-end">
-                    <a th:href="@{|/wine/${wine.id}/delete|}" class="btn btn-danger w-100">Delete wine</a>
-                    <a th:href="@{|/wine/${wine.id}/edit|}" class="btn btn-warning w-100">Edit wine</a>
+                <div class="col-2 btn-group-vertical" role="group" aria-label="Vertical button group">
+                    <div class="row g-0">
+                        <a th:href="@{|/wine/${wine.id}/edit|}" class="btn btn-warning w-100">Edit wine</a>
+                        <a th:href="@{|/wine/${wine.id}/delete|}" class="btn btn-danger w-100">Delete wine</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,11 +62,10 @@
                                             <small class="text-muted"
                                                    th:text="'Added ' + ${step.dateOfStep}">Utworzono...</small>
                                         </p>
+
+                                        <a th:href="@{|/wine/${wine.id}/steps/${step.id}/delete|}"
+                                           class="btn btn-outline-danger w-80">Delete this step</a>
                                     </div>
-                                </div>
-                                <div class="col-md-2 center">
-                                    <a th:href="@{|/wine/${wine.id}/steps/${step.id}/delete|}"
-                                       class="btn btn-danger w-100">Delete this step</a>
                                 </div>
                             </div>
                         </div>
