@@ -4,28 +4,39 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
 <main layout:fragment="content">
-
-<h1>Oblicz ilość potrzebnego cukru!</h1>
-
-<form method="post" th:action="@{/calc}" th:object="${wineCalculator}">
-  <label th:for="alcoholPercentage">
-    Oczekiwany % alkoholu
-  </label>
-    <input type="number" th:field="*{alcoholPercentage}" min="0" placeholder="12.00" step="0.01">
-  <br>
-  <label th:for="amountOfWineInCarboy">
-    Ilość wina w balonie
-  </label>
-    <input type="number" th:field="*{amountOfWineInCarboy}" min="0" placeholder="25.00" step="0.01">
-  <br>
-  <button type="submit">Oblicz</button>
-</form>
-<br>
-<div th:if="*{amountOfSugar != null}" class="alert alert-success" role="alert">
-  <span th:text="'W celu otrzymania ' + *{alcoholPercentage} + '% alkoholu w ' + *{amountOfWineInCarboy} + ' litrach wina, należy dodać ' + *{amountOfSugar} + ' kg cukru.'"></span>
-</div>
-<div th:if="${error}" class="alert alert-danger" role="alert">
-  <span th:text="${error}"></span>
-</div>
-
+    <div class="container">
+        <div class="card m-3">
+            <div class="row mb-2 py-2 text-center">
+                <div>
+                    <h1>Calculate how much sugar you need to make your wine!</h1>
+                    <br>
+                </div>
+                <form method="post" th:action="@{/calc}" th:object="${wineCalculator}">
+                    <label th:for="alcoholPercentage">
+                        Expected percentage of alcohol [%]:
+                    </label>
+                    <input type="number" th:field="*{alcoholPercentage}" min="0" placeholder="12.00" step="0.01">
+                    <br>
+                    <br>
+                    <label th:for="amountOfWineInCarboy">
+                        The amount of wine in the Carboy [litres]:
+                    </label>
+                    <input type="number" th:field="*{amountOfWineInCarboy}" min="0" placeholder="25.00" step="0.01">
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-secondary">Calculate!</button>
+                </form>
+                <br>
+                <br>
+                <h4>
+                    <div th:if="*{amountOfSugar != null}" class="text-center" role="alert">
+                        <span th:text="'To obtain ' + *{alcoholPercentage} + '% of alcohol in ' + *{amountOfWineInCarboy} + ' litres of wine, you have to add ' + *{amountOfSugar} + ' kg of sugar.'"></span>
+                    </div>
+                    <div th:if="${error}" class="alert alert-danger" role="alert">
+                        <span th:text="${error}"></span>
+                    </div>
+                </h4>
+            </div>
+        </div>
+    </div>
 </main>
