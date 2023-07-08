@@ -32,7 +32,7 @@ public class StepController {
     @GetMapping("/wine/{wineId}/steps/{stepId}/delete")
     public String deleteStep(@PathVariable long wineId, @PathVariable long stepId, Model model) {
         stepService.deleteStep(wineId, stepId);
-        model.addAttribute("message", new Message("Sukces!", "Usunięto krok."));
+        model.addAttribute("message", new Message("Success!", "Step removed."));
         return "message";
     }
 }

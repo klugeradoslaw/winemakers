@@ -65,7 +65,7 @@ public class WineController {
     @PostMapping("/wine/add")
     public String addWine(@ModelAttribute("wine") WineSaveDto wine, Model model) {
         wineService.addWine(wine);
-        model.addAttribute("message", new Message("Sukces!", "Nowe wino zostało dodane do bazy danych!"));
+        model.addAttribute("message", new Message("Success!", "New wine added."));
         return "message";
     }
 
@@ -86,7 +86,7 @@ public class WineController {
     public String updateWine(@PathVariable Long id, WineToUpdateDto wineToUpdate, Model model) {
         wineService.updateWine(id, wineToUpdate);
         model.addAttribute("wine", wineToUpdate);
-        model.addAttribute("message", new Message("Sukces!", "Wino zostało zaktualizowane!"));
+        model.addAttribute("message", new Message("Success!", "Wine information updated!"));
         return "message";
     }
 

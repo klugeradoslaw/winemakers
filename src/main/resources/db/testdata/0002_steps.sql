@@ -1,5 +1,5 @@
-insert into step (date_of_step, description, wine_id) values ('2021-03-24', 'Oczyszczenie z rodzynek oraz ziół. Od tej pory nie mieszamy nastawu.', 1);
-insert into step (date_of_step, description, wine_id) values ('2021-04-18', 'Zlanie znad osadu. Czas cichej fermentacji, nie mieszamy.', 1);
-insert into step (date_of_step, description, wine_id) values ('2021-05-18', 'Drugie zlanie znad osadu.', 1);
-insert into step (date_of_step, description, wine_id) values ('2021-07-10', 'Butelkowanie.', 1);
-insert into step (date_of_step, description, wine_id) values ('2021-08-24', 'Usunięcie rodzynek z nastawu hibiskusowego.', 2);
+insert into step (date_of_step, description, wine_id) values ('2022-03-24', 'Getting rid of raisins and herbs. From now on, I do not mix the wine.', 1);
+insert into step (date_of_step, description, wine_id) values ('2022-04-18', 'Removing sediment from wine. Calm fermentation time. we dont mix.', 1);
+insert into step (date_of_step, description, wine_id) values ('2022-05-18', 'Removing sediment - second time.', 1);
+insert into step (date_of_step, description, wine_id) values ('2022-07-10', 'Wine bottling.', 1);
+insert into step (date_of_step, description, wine_id) values ('2022-08-24', 'Removal of raisins and cranberries from the hibiscus wine', 2);
