@@ -17,3 +17,7 @@ Now I'm working on only api -> https://github.com/klugeradoslaw/winemakers-api
 * MySQL
 * Liquibase
 * Git
+
+## to do
+* add user/admin classes with regstratiin/login functionalities
+* add comments and rating wines by others users 
